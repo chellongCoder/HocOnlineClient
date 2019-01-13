@@ -1,6 +1,6 @@
 import { create, persist } from "mobx-persist";
 import { DemoStore } from "../stores/DemoStore";
-import TodoListModel from "../models/TodoListModel";
+import TodoListModel from "../stores/TodoStore";
 
 export default function () {
     const hydrate = create({
