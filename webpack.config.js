@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'eval',
   mode: 'development',
   entry: [
-    './src/index'
+    './src'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -20,13 +20,23 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /\.jsx?$/,
-      use: ['babel-loader'],
-      include: path.join(__dirname, 'src')
-    },
-  {
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader'],
-  }, ]
+        test: /\.jsx?$/,
+        use: ['babel-loader'],
+        include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            limit: 10000
+          },
+        }, ],
+      },
+    ]
   }
 };

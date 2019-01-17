@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import { observable, action } from "mobx";
 import { observer, inject } from "mobx-react";
-
+import PropTypes from 'prop-types';
 import Todo from "./Todo";
 import TodoListModel from "../models/TodoListModel";
-interface Props {
-  todoStore: TodoListModel;
-}
+
+
 @inject("todoStore")
 @observer
-class TodoList extends Component<Props> {
+class TodoList extends Component {
   @observable newTodoTitle = "";
 
   render() {
@@ -49,5 +48,9 @@ class TodoList extends Component<Props> {
     e.preventDefault();
   };
 }
+
+TodoList.propTypes = {
+  todoStore: PropTypes.object
+};
 
 export default TodoList;
