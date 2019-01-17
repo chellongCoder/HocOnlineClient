@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Login from '../Login';
+import Login from '../pages/Login';
 
-export default class Main extends Component {
+export default class LoginContainer extends Component {
   render() {
     return (
       <Login/>

@@ -5,20 +5,15 @@ import { Provider } from "mobx-react";
 import TodoList from "./components/TodoList";
 import TodoListModel from "./stores/TodoStore";
 import config from './boot/configStore';
-import Main from './pages/Main';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RootContainer from "./container/RootContainer";
+import Setup from "./boot/setup";
 
 const store = TodoListModel.getInstance();
 const stores = config();
 console.log("stores", {...stores});
 render(
-  <div>
-    <DevTools />
-    <Provider {...stores}>
-    {/* <TodoList /> */}
-    <Main/>
-    </Provider>
-  </div>,
+  <Setup stores={stores}/>,
   document.getElementById("root")
 );
 
