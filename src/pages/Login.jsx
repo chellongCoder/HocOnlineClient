@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import {
   Container,
   Row,
@@ -19,40 +20,47 @@ import cx from "classnames";
 import backgroundImage from "./../assets/images/icon/backgroundLogin.png";
 import facebook from "./../assets/images/icon/facebook.png";
 import google from "./../assets/images/icon/google.png";
+import user from "./../assets/images/icon/user.png";
+import password from "./../assets/images/icon/password.png";
+import underline from "./../assets/images/icon/underline.png";
 
 import commonColor from "./theme/commonColor";
 import { Title } from "../components/BaseComponent";
+import { Typography, TextField, InputAdornment } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
+import { Link, withRouter } from "react-router-dom";
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
   padding: 4em;
   background: papayawhip;
 `;
-export const StyleSheet = {
-  centerColumn: {
-    marginTop: 50,
+const styles = theme => ({
+  row: {
+    marginBottom: 10
+  },
+  col: {},
+  textField: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    justifyItems: "center"
+    justifyContent: "center"
   },
-  row1: {
-    display: "flex",
-    justifyContent: "left"
+  formGroup: {}
+});
+const ranges = [
+  {
+    value: "0-20",
+    label: "0 to 20"
   },
-  boldText: {
-    color: commonColor.textHeader,
-    fontSize: 31
+  {
+    value: "21-50",
+    label: "21 to 50"
   },
-  inputGroup: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    // marginTop: 20,
-    marginBottom: 110
-  },
-  imageBackground: {}
-};
+  {
+    value: "51-100",
+    label: "51 to 100"
+  }
+];
+
 function getRandomColor() {
   var letters = "0123456789ABCDEF";
   var color = "#";
@@ -61,112 +69,138 @@ function getRandomColor() {
   }
   return color;
 }
-export default class Login extends Component {
+class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.history.push("/register");
+  }
   render() {
+    const { classes } = this.props;
     return (
-      <Container
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          fontSize: 18
-        }}
-      >
-        <Row
-          style={{
-            flex: 1 / 10,
-            height: "100%",
-            alignItems: "flex-end"
-          }}
-        >
-          <Col style={StyleSheet.row1}>
-            {/* <div style={StyleSheet.boldText}>Sign in</div> */}
-            <Title>Sign in</Title>
+      <Container>
+        <Row>
+          <Col xs="6">
+            <Typography variant="title" gutterBottom>
+              Sign in
+            </Typography>
           </Col>
         </Row>
-        <Form
-          style={{
-            flex: 1,
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        <Form onSubmit={this.handleSubmit}>
           <Row>
-            <Col>
-              <FormGroup style={StyleSheet.inputGroup}>
-                <Label style={{ margin: "auto" }} for="exampleUsername">
-                  User name
-                </Label>
-                <Input
-                  type="text"
-                  name="username"
-                  id="exampleUsername"
-                  placeholder="username placeholder"
+            <Col sm="12" md={{ size: 8, offset: 2 }}>
+              <FormGroup>
+                <TextField
+                  fullWidth={true}
+                  id="username"
+                  label="User name"
+                  defaultValue="foo"
+                  className={classes.textField}
+                  margin="normal"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <img style={{ width: "15px" }} src={user} alt="" />
+                      </InputAdornment>
+                    )
+                  }}
                 />
               </FormGroup>
             </Col>
           </Row>
-
           <Row>
-            <Col>
-              <FormGroup style={StyleSheet.inputGroup}>
-                <Label style={{ margin: "auto" }} for="examplePassword">
-                  Password
-                </Label>
-                <Input
+            <Col sm="12" md={{ size: 8, offset: 2 }}>
+              <FormGroup>
+                <TextField
                   type="password"
-                  name="password"
-                  id="examplePassword"
-                  placeholder="password placeholder"
+                  fullWidth={true}
+                  id="password"
+                  label="Password"
+                  defaultValue="foo"
+                  className={classes.textField}
+                  margin="normal"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <img style={{ width: "15px" }} src={password} alt="" />
+                      </InputAdornment>
+                    )
+                  }}
                 />
               </FormGroup>
             </Col>
           </Row>
-
-          <Row>
-            <Col>
-              <Button color="primary" size="lg" block>
-                Block level button
+          <Row className={classes.row}>
+            <Col sm="12" md={{ size: 8, offset: 2 }}>
+              {/* <Button
+                type="submit"
+                block={true}
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                Primary
+              </Button> */}
+              <Button
+                type="submit"
+                block={true}
+                variant="contained"
+                color="primary"
+                className={classes.button}
+              >
+                Primary
               </Button>
             </Col>
           </Row>
-
-          <Row>
-            <Col
-              style={StyleSheet.centerColumn}
-            >
-              <div style={{ textDecoration: "underline"}}>forgot password</div>
+          <Row className={classes.row}>
+            <Col sm="12" md={{ size: 8, offset: 2 }}>
+              <Typography
+                style={{ textAlign: "center" }}
+                variant="subheading"
+                gutterBottom
+              >
+                Forgot Password?
+              </Typography>
             </Col>
           </Row>
-
-          <Row>
-            <Col style={StyleSheet.centerColumn}>
-              <img style={{width : "150px"}} src={facebook} alt=""/>
-              <img style={{ width: "150px" }} src={google} alt="" />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "flex-end"
-              }}
-            >
+          <Row className={classes.row}>
+            <Col sm="12" md={{ size: 8, offset: 2 }} className="text-center">
               <img
-                style={{ width: "300px", height: "70%" }}
-                src={backgroundImage}
-                className="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                style={{ width: "20px" }}
+                className="mr-2 mt-2"
+                src={underline}
+                alt=""
+              />
+              or
+              <img
+                style={{ width: "20px" }}
+                className="ml-2 mt-2"
+                src={underline}
                 alt=""
               />
             </Col>
           </Row>
         </Form>
+        <Row className={classes.row}>
+          <Col sm="12" md={{ size: 8, offset: 2 }} className="text-center">
+            <img style={{ width: "20%" }} className="" src={facebook} alt="" />
+            <img style={{ width: "20%" }} className="" src={google} alt="" />
+          </Col>
+        </Row>
+        <Row>
+          <Col style={{ display: "flex", justifyContent: "center" }}>
+            <img style={{ height: "30%" }} src={backgroundImage} alt="" />
+          </Col>
+        </Row>
       </Container>
     );
   }
 }
+Login.propTypes = {
+  classes: PropTypes.object
+};
+export default withRouter(withStyles(styles)(Login));
