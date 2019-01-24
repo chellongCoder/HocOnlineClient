@@ -29,6 +29,7 @@ import { Title } from "../components/BaseComponent";
 import { Typography, TextField, InputAdornment } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link, withRouter } from "react-router-dom";
+import "bootstrap/dist/styles/demo.css";
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
@@ -77,12 +78,12 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.props.history.push("/register");
+    this.props.history.push("/dashboard");
   }
   render() {
     const { classes } = this.props;
     return (
-      <Container>
+      <Container about>
         <Row>
           <Col xs="6">
             <Typography variant="title" gutterBottom>
@@ -99,7 +100,6 @@ class Login extends Component {
                   id="username"
                   label="User name"
                   defaultValue="foo"
-                  className={classes.textField}
                   margin="normal"
                   InputProps={{
                     startAdornment: (
@@ -116,6 +116,9 @@ class Login extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
+                  sty
+                  className="text-center"
+                  style={{textAlign : 'center'}}
                   type="password"
                   fullWidth={true}
                   id="password"
@@ -193,7 +196,7 @@ class Login extends Component {
         </Row>
         <Row>
           <Col style={{ display: "flex", justifyContent: "center" }}>
-            <img style={{ height: "30%" }} src={backgroundImage} alt="" />
+            <img style={{ height: "42%" }} src={backgroundImage} alt="" />
           </Col>
         </Row>
       </Container>

@@ -8,6 +8,9 @@ Supports ES6 and JSX compilation through babel.
 * For a typescript based boilerplate, see [`mobx-react-typescript-boilerplate`](https://github.com/mobxjs/mobx-react-typescript-boilerplate)
 * To use MobX with create-react-app and decorators, [react-app-rewired](https://github.com/timarney/react-app-rewired/tree/master/packages/react-app-rewire-mobx) or this example using [custom-react-scripts](https://github.com/codylindley/mobx-react)
 
+### Components
+[React markdown](https://reactjsexample.com/react-component-wrap-for-simplemde-markdown-editor/)
+
 
 ### Run the example
 

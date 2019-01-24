@@ -213,7 +213,7 @@ class Register extends Component {
         </Form>
         <Row>
           <Col style={{ display: 'flex', justifyContent: 'center' }}>
-            <img style={{  height : '30%'}} src={backgroundImage} alt="" />
+            <img style={{  height : '42%'}} src={backgroundImage} alt="" />
           </Col>
         </Row>
       </Container>
