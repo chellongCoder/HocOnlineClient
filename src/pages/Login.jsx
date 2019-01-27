@@ -83,7 +83,7 @@ class Login extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Container about>
+      <Container>
         <Row>
           <Col xs="6">
             <Typography variant="title" gutterBottom>
@@ -116,7 +116,6 @@ class Login extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
-                  sty
                   className="text-center"
                   style={{textAlign : 'center'}}
                   type="password"

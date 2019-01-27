@@ -6,6 +6,7 @@ import TodoList from "./components/TodoList";
 import TodoListModel from "./stores/TodoStore";
 import config from './boot/configStore';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import RootContainer from "./container/RootContainer";
 import Setup from "./boot/setup";
 
