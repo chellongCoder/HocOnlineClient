@@ -1,14 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import HomeContainer from './HomeContainer';
+import Sidebar from '../../components/Sidebar';
 
 const DashboardContainer = ({
-    match
+    match, history
 }) => {
-    console.log("match", match);
+    if(match.url === '/') {
+        history.push("/dashboard/home");
+    }
+    console.log("match", match, history);
     return (
         <div>
-            <Route path={`${match.url}/home`} component={HomeContainer} />
+            <div>
+                <Sidebar path={`${match.url}`}/>
+            </div>
+            <div>
+                <Route path={`${match.url}/home`} component={HomeContainer} />
+            </div>
         </div>
     );
 }

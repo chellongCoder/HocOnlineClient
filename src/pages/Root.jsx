@@ -10,7 +10,7 @@ import DashboardContainer from "../container/DashboardContainer";
 class Root extends Component {
   constructor(props) {
     super(props);
-    this.componentRoot = LoginContainer;
+    this.componentRoot = DashboardContainer;
   }
   render() {
     return (
@@ -20,6 +20,8 @@ class Root extends Component {
           <Route path="/login" component={LoginContainer} />
           <Route path="/register" component={RegisterContainer} />
           <Route path="/dashboard" component={DashboardContainer}/>
+          {/* <Route path="/Java" component={DashboardContainer} />
+          <Route path="/CCNA" component={DashboardContainer} /> */}
           {/* <Route path="/topics" component={Topics} /> */}
         </div>
       </Router>

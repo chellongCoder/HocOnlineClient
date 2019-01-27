@@ -1,7 +1,7 @@
 const CommonStyle = {
-    // icon : {
-    //     width 
-    // }
+    container : {
+        paddingLeft: 70,
+    }
 }
 
 export default CommonStyle;
