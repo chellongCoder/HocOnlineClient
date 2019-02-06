@@ -8,6 +8,9 @@ import SideNav, {
 } from "@trendmicro/react-sidenav";
 import home from "./../../assets/images/icon/home.png";
 import allNew from "./../../assets/images/icon/allNew.png";
+import documents from "./../../assets/images/icon/documents.png";
+import tools from "./../../assets/images/icon/tools.png";
+import friend from "./../../assets/images/icon/friend.png";
 
 import {
   BrowserRouter as Router,
@@ -63,12 +66,27 @@ class Sidebar extends Component {
             </NavIcon>
             <NavText>NEW FEED</NavText>
             <NavItem eventKey="home">
+              <NavIcon>
+                <img src={home} style={navSubIcon} />
+              </NavIcon>
               <NavText>Home</NavText>
             </NavItem>
+            <NavItem eventKey="timeline">
+              <NavIcon>
+                <img src={home} style={navSubIcon} />
+              </NavIcon>
+              <NavText>My Timeline</NavText>
+            </NavItem>
             <NavItem eventKey="allnew">
+              <NavIcon>
+                <img src={allNew} style={navSubIcon} />
+              </NavIcon>
               <NavText>All new</NavText>
             </NavItem>
             <NavItem eventKey="allfriend">
+              <NavIcon>
+                <img src={friend} style={navSubIcon} />
+              </NavIcon>
               <NavText>All friend</NavText>
             </NavItem>
           </NavItem>
@@ -77,7 +95,7 @@ class Sidebar extends Component {
         */}
           <NavItem eventKey="documents">
             <NavIcon>
-              <img src={allNew} style={navIcon} />
+              <img src={documents} style={navIcon} />
             </NavIcon>
             <NavText>DOCUMENTS</NavText>
             <NavItem eventKey="lesson">
@@ -104,7 +122,7 @@ class Sidebar extends Component {
         */}
           <NavItem eventKey="tools">
             <NavIcon>
-              <img src={allNew} style={navIcon} />
+              <img src={tools} style={navIcon} />
             </NavIcon>
             <NavText>TOOLS</NavText>
             <NavItem eventKey="lesson">
