@@ -1,0 +1,11 @@
+.listitem {
+   background: red;
+   overflow-y: scroll;
+   flex : 1;
+}
+
+.option {
+   width: 4%;
+   height: 4%;
+
+}
