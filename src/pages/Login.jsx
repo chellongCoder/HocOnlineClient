@@ -25,7 +25,7 @@ import { Title } from "../components/BaseComponent";
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
-  padding: 4em;
+  padding: ;
   background: papayawhip;
 `;
 export const StyleSheet = {
@@ -49,9 +49,14 @@ export const StyleSheet = {
     flexDirection: "column",
     justifyContent: "center",
     // marginTop: 20,
-    marginBottom: 110
+    marginBottom: 110,
+
   },
-  imageBackground: {}
+  imageBackground: {
+
+  },
+
+  
 };
 function getRandomColor() {
   var letters = "0123456789ABCDEF";
@@ -100,7 +105,7 @@ export default class Login extends Component {
                 <Label style={{ margin: "auto" }} for="exampleUsername">
                   User name
                 </Label>
-                <Input
+                <Input 
                   type="text"
                   name="username"
                   id="exampleUsername"
@@ -116,7 +121,7 @@ export default class Login extends Component {
                 <Label style={{ margin: "auto" }} for="examplePassword">
                   Password
                 </Label>
-                <Input
+                <Input 
                   type="password"
                   name="password"
                   id="examplePassword"
