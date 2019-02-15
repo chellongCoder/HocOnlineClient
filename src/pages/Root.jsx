@@ -10,7 +10,7 @@ import DashboardContainer from "../container/DashboardContainer";
 class Root extends Component {
   constructor(props) {
     super(props);
-    this.componentRoot = DashboardContainer;
+    this.componentRoot = RegisterContainer ;
   }
   render() {
     return (

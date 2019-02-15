@@ -29,7 +29,7 @@ import { Title } from "../components/BaseComponent";
 import { Typography, TextField, InputAdornment } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link, withRouter } from "react-router-dom";
-import "bootstrap/dist/styles/demo.css";
+
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
@@ -96,6 +96,12 @@ class Login extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
+                 inputProps={{
+                    style: { textAlign: "center"}
+                  }}
+                  InputLabelProps={{
+                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                  }}
                   fullWidth={true}
                   id="username"
                   label="User name"
@@ -116,6 +122,12 @@ class Login extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
+                 inputProps={{
+                    style: { textAlign: "center"}
+                  }}
+                  InputLabelProps={{
+                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                  }}
                   className="text-center"
                   style={{textAlign : 'center'}}
                   type="password"
