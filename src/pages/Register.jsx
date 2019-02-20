@@ -11,7 +11,8 @@ import {
   Form,
   FormGroup,
   Label,
-  FormText
+  FormText,
+  Button
 } from "reactstrap";
 import cx from "classnames";
 import backgroundImage from "./../assets/images/icon/backgroundLogin.png";
@@ -19,7 +20,6 @@ import facebook from "./../assets/images/icon/facebook.png";
 import google from "./../assets/images/icon/google.png";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -37,6 +37,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import mail from "./../assets/images/icon/baseline-mail_outline-black-18/2x/baseline_mail_outline_black_18dp.png";
 import country from "./../assets/images/icon/sharp-map-black-18/2x/sharp_map_black_18dp.png";
 import phone from "./../assets/images/icon/baseline-phone-black-18/2x/baseline_phone_black_18dp.png";
+import { Link, withRouter } from "react-router-dom";
 import { MenuItem, TextField } from "@material-ui/core";
 
 const styles = theme => ({
@@ -82,6 +83,16 @@ const ranges = [
 ];
 
 class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("ok");
+    this.props.history.push("/login");
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -95,7 +106,7 @@ class Register extends Component {
           </Col>
         </Row>
 
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Row className={classes.row}>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
@@ -249,8 +260,9 @@ class Register extends Component {
           </Row>
           <Row className={classes.row}>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
-              <Button 
-                fullWidth={true}
+              <Button
+                type="submit"
+                block={true}
                 variant="contained"
                 color="primary"
                 className={classes.button}
@@ -272,7 +284,7 @@ class Register extends Component {
         </Form>
         <Row>
           <Col style={{ display: 'flex', justifyContent: 'center' }}>
-            <img style={{ width: "50%", height : '40%'}} src={backgroundImage} alt="" />
+            <img style={{  height : '42%'}} src={backgroundImage} alt="" />
           </Col>
         </Row>
       </Container>
@@ -283,4 +295,4 @@ class Register extends Component {
 Register.propTypes = {
   classes: PropTypes.object
 };
-export default withStyles(styles)(Register);
+export default withRouter(withStyles(styles)(Register));

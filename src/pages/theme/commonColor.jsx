@@ -1,4 +1,6 @@
 export default {
+    deviceWidth : window.innerWidth,
+    deviceHeight : window.innerHeight,
     // AndroidRipple
     androidRipple: true,
     androidRippleColor: "rgba(256, 256, 256, 0.3)",
@@ -291,7 +293,8 @@ export default {
     inverseTextColor: "#F7F7F6",
     noteFontSize: 14,
     textType: "#7B7B7B",
-    textNote: "#808080",
+    textNote: "#8A8F9C",
+    textNoteBold: "#59626A",
     textDanger: "#d9534f",
     // Title
     titleFontfamily:  "System",
