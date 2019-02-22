@@ -92,12 +92,22 @@ class Register extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
+                  
+                  style={{textAlign : 'center'}}
                   fullWidth={true}
                   id="username"
                   label="User name"
                   defaultValue="foo"
                   className={classes.textField}
                   margin="normal"
+                   inputProps={{
+                    style: { textAlign: "center"}
+                    
+                  }}
+                  InputLabelProps={{
+                    style: {textAlign:"center",color:'#7769FF',width:"135%"}
+                  }}
+
                 />
               </FormGroup>
             </Col>
@@ -120,6 +130,12 @@ class Register extends Component {
                   defaultValue="foo"
                   className={classes.textField}
                   margin="normal"
+                  inputProps={{
+                    style: { textAlign: "center"}
+                  }}
+                  InputLabelProps={{
+                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                  }}
                 />
               </FormGroup>
             </Col>
@@ -129,6 +145,12 @@ class Register extends Component {
               <FormGroup>
                 {/* */}
                 <TextField
+                 inputProps={{
+                    style: { textAlign: "center"}
+                  }}
+                  InputLabelProps={{
+                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                  }}
                   select
                   label="Country"
                   value={"no"}
@@ -155,6 +177,12 @@ class Register extends Component {
               <FormGroup>
                 {/* */}
                 <TextField
+                inputProps={{
+                    style: { textAlign: "center"}
+                  }}
+                  InputLabelProps={{
+                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                  }}
                   fullWidth={true}
                   InputProps={{
                     startAdornment: (
@@ -183,6 +211,12 @@ class Register extends Component {
                   defaultValue="foo"
                   className={classes.textField}
                   margin="normal"
+                   inputProps={{
+                    style: { textAlign: "center"}
+                  }}
+                  InputLabelProps={{
+                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                  }}
                 />
               </FormGroup>
             </Col>
@@ -190,6 +224,9 @@ class Register extends Component {
           <Row className={classes.row}>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <Button
+              InputProps={{
+                style: {borderRadius: "50px 50px"}
+              }}
                 type="submit"
                 block={true}
                 variant="contained"
