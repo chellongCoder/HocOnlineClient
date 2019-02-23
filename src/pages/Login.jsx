@@ -33,7 +33,7 @@ import { Link, withRouter } from "react-router-dom";
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 const Wrapper = styled.section`
-  padding: 4em;
+  padding: ;
   background: papayawhip;
 `;
 const styles = theme => ({
