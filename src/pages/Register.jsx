@@ -262,9 +262,9 @@ class Register extends Component {
           <Row className={classes.row}>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <Button
-              InputProps={{
-                style: {borderRadius: "50px 50px"}
-              }}
+              
+                style= {{borderRadius: "50px 50px"}}
+              
                 type="submit"
                 block={true}
                 variant="contained"
