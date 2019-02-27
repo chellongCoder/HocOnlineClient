@@ -48,6 +48,8 @@ class Sidebar extends Component {
     const { classes } = this.props;
     return (
       <SideNav
+        style={{ background: 'blue', minWidth: '14%',}}
+        expanded={true}
         onSelect={selected => {
           console.log(this.props.path, selected, this.props.history);
           const to = this.props.path + "/" + selected;
@@ -55,7 +57,7 @@ class Sidebar extends Component {
           // Add your code here
         }}
       >
-        <SideNav.Toggle />
+        {/* <SideNav.Toggle /> */}
         {/* 
             TODO: @render new feed 
         */}

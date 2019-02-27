@@ -21,6 +21,8 @@ import image from './../assets/images/faces/image.png';
 import studenttype from "./../assets/images/icon/student-type.png";
 import CommonStyle from "../pages/theme/commonStyle";
 import commonColor from "../pages/theme/commonColor";
+import { toJS } from "mobx";
+import { dateFormat2, dayBetween } from "../boot/commons";
 export default class ItemTimeline extends Component {
   constructor(props) {
     super(props);
@@ -33,14 +35,15 @@ export default class ItemTimeline extends Component {
     this.setState({isSeeMore : true})
   }
   render() {
+    console.log("value", toJS(this.props.value));
     return (
-        <Row style={{ display: "flex" }}>
+        <Row style={{ display: "flex"}} >
           <div style={{ flex: 1 / 10 }} >
             <img className="avatar-item" src={image} style={CommonStyle.imageNormal}/>
           </div>
-          <div style={{ flex: 9 / 10 }} className="bg-light right-item">
+          <div style={{ flex: 9 / 10 }} className=" right-item">
             <div style={{ display: "flex" }}>
-              <div style={{ flex: 3 / 10 }}>name</div>
+              <div style={{ flex: 3 / 10 , fontSize : commonColor.fontSizeH3}}>{this.props.value.user_name}</div>
               <div style={{ flex: 7 / 10, display : 'flex', justifyContent : 'flex-end' , alignItems : 'center'}}>
                 <img className="mr-1" style={CommonStyle.imageSmall} src={studenttype} alt="#"/>
                 student
@@ -49,7 +52,7 @@ export default class ItemTimeline extends Component {
             {
             !this.state.isSeeMore ?
             <div >
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, saepe? <div onClick={this.handleSeeMore} style={{ color: commonColor.commonBackground, cursor: "pointer"}}>see more...</div>
+                {this.props.value.Content} <div onClick={this.handleSeeMore} style={{ color: commonColor.commonBackground, cursor: "pointer"}}>see more...</div>
             </div> :
             <div>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -60,8 +63,7 @@ export default class ItemTimeline extends Component {
             </div>
             }
             <div style={CommonStyle.textNote}>
-              Check in: <span className="time-post">Dec 24</span> — 1 month ago
-              lorem
+            Check in: <span className="time-post">{dateFormat2(new Date(this.props.value.Created))}</span> — {dayBetween(new Date(), new Date(this.props.value.Created))} days ago
             </div>
           </div>
         </Row>

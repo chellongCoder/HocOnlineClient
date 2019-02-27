@@ -9,3 +9,8 @@
 .time-post {
     color : #59626A;
 }
+
+.list-group-item {
+    border : 0px solid rgba(0, 0, 0, .125);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}

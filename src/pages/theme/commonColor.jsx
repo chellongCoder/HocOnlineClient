@@ -107,6 +107,7 @@ export default {
     //background
     tabbarBackground: "#0D6ED1",
     commonBackground: "#3694EE",
+    contentBackground: "#F5F5F5",
     buttonBackground: "#FFFFFF",
     headerBackground: "#FFFFFF",
     whitebackground: "#FFFFFF",
