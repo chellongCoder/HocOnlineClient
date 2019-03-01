@@ -32,10 +32,7 @@ import { Link, withRouter } from "react-router-dom";
 
 
 // Create a Wrapper component that'll render a <section> tag with some styles
-const Wrapper = styled.section`
-  padding: ;
-  background: papayawhip;
-`;
+
 const styles = theme => ({
   row: {
     marginBottom: 10
@@ -78,7 +75,8 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.props.history.push("/dashboard");
+    this.props.handleLogin();
+    // 
   }
   render() {
     const { classes } = this.props;
@@ -96,6 +94,7 @@ class Login extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
+                  onChange={(event) => this.props.onChangeUserName(event)}
                  inputProps={{
                     style: { textAlign: "center"}
                   }}
@@ -105,8 +104,9 @@ class Login extends Component {
                   fullWidth={true}
                   id="username"
                   label="User name"
-                  defaultValue="foo"
+                  defaultValue=""
                   margin="normal"
+                  placeholder="foo"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -122,6 +122,7 @@ class Login extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
+                  onChange={(event) => this.props.onChangePassword(event)}
                  inputProps={{
                     style: { textAlign: "center"}
                   }}
@@ -134,7 +135,7 @@ class Login extends Component {
                   fullWidth={true}
                   id="password"
                   label="Password"
-                  defaultValue="foo"
+                  defaultValue=""
                   className={classes.textField}
                   margin="normal"
                   InputProps={{
@@ -211,11 +212,14 @@ class Login extends Component {
             <img style={{ height: "42%" }} src={backgroundImage} alt="" />
           </Col>
         </Row>
+        <div onClick={this.props.onClick}>click</div>
       </Container>
     );
   }
 }
 Login.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  handleLogin : PropTypes.func,
+  onClick : PropTypes.func
 };
 export default withRouter(withStyles(styles)(Login));

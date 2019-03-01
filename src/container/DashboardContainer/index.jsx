@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import HomeContainer from './HomeContainer';
 import Sidebar from '../../components/Sidebar';
 import AllNewContainer from './AllNewContainer';
 import DashBoard from '../../pages/Dashboard';
+import LoginContainer from './../LoginContainer';
 
 const DashboardContainer = ({
     match, history
@@ -18,7 +19,15 @@ const DashboardContainer = ({
                 <Sidebar path={`${match.url}`}/>
             </div>
             <div>
-                <Route path={`${match.url}/`} component={DashBoard} />
+                <Route path={`${match.url}/`} render={(props) => {
+                    return false ? (
+                        <DashBoard />
+                    ) : (
+                            <Redirect to={{
+                                pathname: `${match.url}/allnew`,
+                            }} />
+                    )
+                }} />
                 <Route path={`${match.url}/home`} component={HomeContainer} />
                 <Route path={`${match.url}/allnew`} component={AllNewContainer} />
             </div>

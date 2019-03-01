@@ -11,7 +11,7 @@ import allNew from "./../../assets/images/icon/allNew.png";
 import documents from "./../../assets/images/icon/documents.png";
 import tools from "./../../assets/images/icon/tools.png";
 import friend from "./../../assets/images/icon/friend.png";
-
+import "./style.css"
 import {
   BrowserRouter as Router,
   Route,
@@ -134,6 +134,11 @@ class Sidebar extends Component {
               <NavText>New post</NavText>
             </NavItem>
           </NavItem>
+          
+      
+            <Link onClick={() => {
+              localStorage.clear();
+            }} style={{textDecoration : "none", position : 'absolute', bottom : 0}} to="/login">Logout</Link>
         </SideNav.Nav>
       </SideNav>
     );
