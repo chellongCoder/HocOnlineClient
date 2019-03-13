@@ -21,7 +21,11 @@ class LoginContainer extends Component {
     console.log("will mount", this.props.userStore);
   }
   async handleLogin() {
-    const data = await LoginService.authenService(this.props.userStore.username, this.props.userStore.password);
+    const data = await LoginService.authenService(this.props.userStore.username, this.props.userStore.password).catch(() => {
+      console.log("cathc");
+      this.props.userStore.changeErrorLogin("error");
+      return;
+    });
     console.log("data", data);
     localStorage.setItem('token',data.token);
     this.props.history.push("/dashboard");
@@ -46,6 +50,7 @@ class LoginContainer extends Component {
     console.log("token ", this.props.userStore.authenToken);
     return (
       <Login
+        errorLogin={this.props.userStore.errorLogin}
         onChangePassword={this.onChangePassword}
         onChangeUserName={this.onChangeUserName}
         onClick={this.onClick}

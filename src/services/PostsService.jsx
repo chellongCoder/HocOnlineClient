@@ -1,7 +1,9 @@
 import WebConfig from './../boot/WebConfig';
 
 async function getPost(page, limit, content, created) {
-    let request = `${WebConfig.SERVER}/${WebConfig.POSTS_API}?page=${page}&limit=${limit}&ref=["user"]&map=["name"]&content=${content}&created=${created}`;
+    let request = `${WebConfig.SERVER}/${WebConfig.API}/${
+      WebConfig.POSTS_API
+    }?page=${page}&limit=${limit}&ref=["user"]&map=["name"]&content=${content}&created=${created}`;
     console.log('request', request);
     const res = await fetch(request);
     const json = await res.json();
@@ -11,7 +13,9 @@ async function getPost(page, limit, content, created) {
 }
 
 async function getUserByPostId(idPost) {
-    let request = `${WebConfig.SERVER}/${WebConfig.POSTS_API}/${idPost}/user`;
+    let request = `${WebConfig.SERVER}/${WebConfig.API}/${
+      WebConfig.POSTS_API
+    }/${idPost}/user`;
     console.log('request', request);
     const res = await fetch(request);
     const json = await res.json();

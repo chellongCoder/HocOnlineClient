@@ -21,6 +21,14 @@ export default class UserStore {
     @observable
     password = "";
 
+    @observable
+    errorLogin = "";
+
+    @action
+    changeErrorLogin (error) {
+        this.errorLogin = error;
+    }
+
     @action
     changeUsername(username) {
         this.username = username;

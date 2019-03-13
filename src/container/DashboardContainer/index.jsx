@@ -5,6 +5,7 @@ import Sidebar from '../../components/Sidebar';
 import AllNewContainer from './AllNewContainer';
 import DashBoard from '../../pages/Dashboard';
 import LoginContainer from './../LoginContainer';
+import ToolEditorContainer from './ToolEditorContainer';
 
 const DashboardContainer = ({
     match, history
@@ -21,15 +22,18 @@ const DashboardContainer = ({
             <div>
                 <Route path={`${match.url}/`} render={(props) => {
                     return false ? (
-                        <DashBoard />
+                      <DashBoard />
                     ) : (
-                            <Redirect to={{
-                                pathname: `${match.url}/allnew`,
-                            }} />
-                    )
+                      <Redirect
+                        to={{
+                          pathname: `${match.url}/allnew`
+                        }}
+                      />
+                    );
                 }} />
                 <Route path={`${match.url}/home`} component={HomeContainer} />
                 <Route path={`${match.url}/allnew`} component={AllNewContainer} />
+                <Route path={`${match.url}/tool`} component={ToolEditorContainer} />
             </div>
         </div>
     );

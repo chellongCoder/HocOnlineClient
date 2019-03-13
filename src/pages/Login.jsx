@@ -14,7 +14,8 @@ import {
   Form,
   FormGroup,
   Label,
-  FormText
+  FormText,
+  Alert
 } from "reactstrap";
 import cx from "classnames";
 import backgroundImage from "./../assets/images/icon/backgroundLogin.png";
@@ -29,7 +30,6 @@ import { Title } from "../components/BaseComponent";
 import { Typography, TextField, InputAdornment } from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Link, withRouter } from "react-router-dom";
-
 
 // Create a Wrapper component that'll render a <section> tag with some styles
 
@@ -59,14 +59,7 @@ const ranges = [
   }
 ];
 
-function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -76,7 +69,7 @@ class Login extends Component {
     e.preventDefault();
     e.stopPropagation();
     this.props.handleLogin();
-    // 
+    //
   }
   render() {
     const { classes } = this.props;
@@ -89,17 +82,24 @@ class Login extends Component {
             </Typography>
           </Col>
         </Row>
+        {this.props.errorLogin ? (
+          <Alert color="danger">Username or Password is incorrect</Alert>
+        ) : null}
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
-                  onChange={(event) => this.props.onChangeUserName(event)}
-                 inputProps={{
-                    style: { textAlign: "center"}
+                  onChange={event => this.props.onChangeUserName(event)}
+                  inputProps={{
+                    style: { textAlign: "center" }
                   }}
                   InputLabelProps={{
-                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                    style: {
+                      textAlign: "center",
+                      color: "#7769FF",
+                      width: "135%"
+                    }
                   }}
                   fullWidth={true}
                   id="username"
@@ -122,15 +122,19 @@ class Login extends Component {
             <Col sm="12" md={{ size: 8, offset: 2 }}>
               <FormGroup>
                 <TextField
-                  onChange={(event) => this.props.onChangePassword(event)}
-                 inputProps={{
-                    style: { textAlign: "center"}
+                  onChange={event => this.props.onChangePassword(event)}
+                  inputProps={{
+                    style: { textAlign: "center" }
                   }}
                   InputLabelProps={{
-                    style: { textAlign: "center",color:'#7769FF',width: "135%"}
+                    style: {
+                      textAlign: "center",
+                      color: "#7769FF",
+                      width: "135%"
+                    }
                   }}
                   className="text-center"
-                  style={{textAlign : 'center'}}
+                  style={{ textAlign: "center" }}
                   type="password"
                   fullWidth={true}
                   id="password"
@@ -161,7 +165,7 @@ class Login extends Component {
                 Primary
               </Button> */}
               <Button
-                style= {{borderRadius: "50px 50px"}}
+                style={{ borderRadius: "50px 50px" }}
                 type="submit"
                 block={true}
                 variant="contained"
@@ -219,7 +223,7 @@ class Login extends Component {
 }
 Login.propTypes = {
   classes: PropTypes.object,
-  handleLogin : PropTypes.func,
-  onClick : PropTypes.func
+  handleLogin: PropTypes.func,
+  onClick: PropTypes.func
 };
 export default withRouter(withStyles(styles)(Login));

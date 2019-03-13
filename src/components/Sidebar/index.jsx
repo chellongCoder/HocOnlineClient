@@ -127,7 +127,7 @@ class Sidebar extends Component {
               <img src={tools} style={navIcon} />
             </NavIcon>
             <NavText>TOOLS</NavText>
-            <NavItem eventKey="lesson">
+            <NavItem eventKey="tool">
               <NavIcon>
                 <img src={allNew} style={navSubIcon} />
               </NavIcon>
@@ -138,7 +138,7 @@ class Sidebar extends Component {
       
             <Link onClick={() => {
               localStorage.clear();
-            }} style={{textDecoration : "none", position : 'absolute', bottom : 0}} to="/login">Logout</Link>
+            }} style={{textDecoration : "none", position : 'absolute', bottom : 0, left : 0}} to="/login">Logout</Link>
         </SideNav.Nav>
       </SideNav>
     );

@@ -180,10 +180,13 @@ export class AllNew extends Component {
             sm={{ size: 7 }}
             xs="7"
           >
-            <ReactMarkdown source={this.state.input} />
+            <ReactMarkdown
+              // transformLinkUri="http://localhost:8080/upload/markdown/README.md"
+              source={this.state.input}
+            />
           </Col>
-          
-          <Blur
+
+          {/* <Blur
             blurRadius={5}
             enableStyles
             style={{
@@ -213,39 +216,7 @@ export class AllNew extends Component {
               >
                 comment
               </Blur>
-              {/* <div
-                style={{
-                  backgroundColor: commonColor.contentBackground,
-                  opacity: 1,
-                  display: "flex"
-                }}
-              >
-                <div
-                  sm={{ size: 2 }}
-                  style={{
-                    alignItems: "center",
-                    display: "flex",
-                    justifyContent: "center",
-                    flex: 2 / 10
-                  }}
-                >
-                  <div
-                    style={{
-                      backgroundColor: commonColor.commonBackground,
-                      height: 50,
-                      width: 50,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    M
-                  </div>
-                </div>
-                <div style={{ flex: 8 / 10 }} sm={{ size: 10 }}>
-                  {`${"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, excepturi vel pariatur, dolorem sapiente nemo quasi maxime incidunt nobis in natus quaerat consequuntur. Officia incidunt dolores eaque cupiditate rem iste?"}\nLorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, excepturi vel pariatur, dolorem sapiente nemo quasi maxime incidunt nobis in natus quaerat consequuntur. Officia incidunt dolores eaque cupiditate rem iste?`}
-                </div>
-              </div> */}
+              
               <Comment/>
               <Comment />
               <Comment />
@@ -261,7 +232,7 @@ export class AllNew extends Component {
                 <Button color="secondary">To the Right!</Button>
               </InputGroupAddon>
             </InputGroup>
-          </Blur>
+          </Blur> */}
         </Row>
       </div>
     );

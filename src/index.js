@@ -21,10 +21,12 @@ render(
 store.addTodo("Get Coffee");
 store.addTodo("Write simpler code");
 store.todos[0].finished = true;
-
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:8080');
+console.log("Socket ", socket);
 setTimeout(() => {
   store.addTodo("Get a cookie as well");
 }, 2000);
 
-// playing around in the console
+// playing around in the ujconsole
 window.store = store;
