@@ -36,8 +36,9 @@ export default class ItemTimeline extends Component {
   }
   render() {
     console.log("value", toJS(this.props.value));
+    let {value} = this.props;
     return (
-        <Row style={{ display: "flex"}} >
+        <Row className="item" onClick={() => this.props.clickItem(value.id)} style={{ display: "flex", cursor : "pointer",}} >
           <div style={{ flex: 1 / 10 }} >
             <img className="avatar-item" src={image} style={CommonStyle.imageNormal}/>
           </div>
@@ -46,7 +47,7 @@ export default class ItemTimeline extends Component {
               <div style={{ flex: 3 / 10 , fontSize : commonColor.fontSizeH3}}>{this.props.value.user_name}</div>
               <div style={{ flex: 7 / 10, display : 'flex', justifyContent : 'flex-end' , alignItems : 'center'}}>
                 <img className="mr-1" style={CommonStyle.imageSmall} src={studenttype} alt="#"/>
-                student
+                admin
               </div>
             </div>
             {
@@ -55,11 +56,7 @@ export default class ItemTimeline extends Component {
                 {this.props.value.Content} <div onClick={this.handleSeeMore} style={{ color: commonColor.commonBackground, cursor: "pointer"}}>see more...</div>
             </div> :
             <div>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Maxime adipisci, exercitationem voluptatibus cumque officia
-              repudiandae. Eum fugiat cumque magnam nihil modi, ipsa
-              praesentium accusamus odit harum. Facilis nostrum cupiditate
-              molestias.
+              {value.Content}
             </div>
             }
             <div style={CommonStyle.textNote}>

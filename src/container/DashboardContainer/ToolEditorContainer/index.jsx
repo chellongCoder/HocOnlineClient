@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col ,Alert} from 'reactstrap';
 import { Header } from '../../../pages/Dashboard/ToolEditor/header';
 import commonColor from '../../../pages/theme/commonColor';
 import ChoiceClass from '../../../pages/Dashboard/ToolEditor/ChoiceClass';
@@ -13,14 +13,18 @@ import { inject, observer } from 'mobx-react';
 import jwt from 'jsonwebtoken';
 import jwt_decode from 'jwt-decode';
 import WebConfig from '../../../boot/WebConfig';
+import PostsService from '../../../services/PostsService';
+import { toJS } from 'mobx';
 
 @inject("toolStore")
+@inject("allNewStore")
 @observer
 export default class ToolEditorContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      file : null
+      file : null,
+      validate : false
     }
     
     this.upload = this.upload.bind(this);
@@ -33,11 +37,21 @@ export default class ToolEditorContainer extends Component {
   async upload () {
     
     let {title, lop, typePost, date} = this.props.toolStore;
+    if(title!=="" || lop!=="" || typePost!=="" || date!=="" ) {
+      this.setState({validate : true});
+    }
     let decoded = jwt_decode(localStorage.getItem('token'));
     console.log(title, lop, typePost, date, decoded.Id);
     let postId = await UploadService.upload(title, lop, typePost, date, decoded.Id);
     let file = await UploadService.uploadMarkDownFile(this.state.file);
-    let data = await UploadService.insertData(title, postId, `${WebConfig.SERVER}/${file.link}`)
+    let data = await UploadService.insertData(title, postId, `${WebConfig.SERVER}/${file.link}`);
+    let post = await PostsService.getPostByPostId(postId);
+    post.user_name = decoded.userName;
+    console.log("post", post, "decode", decoded);
+    let posts = toJS(this.props.allNewStore.posts);
+    console.log("posts", posts);
+    posts.unshift(post);
+    this.props.allNewStore.changePosts(posts);
     this.props.history.push("allnew")
   }
 
@@ -62,9 +76,10 @@ export default class ToolEditorContainer extends Component {
   render() {
     
     return (
-      <Container className="float-right">
-        <Row>
-          <Col>
+      <div style={{width : commonColor.deviceWidth*(8/10), float : 'right' , margin : 0, padding : 0}}>
+        <Row style={{marginLeft: 0, marginRight: 0,}}>
+          <Col >
+          {this.state.validate ? <Alert color="danger">All field should be not empty</Alert> : null}
             <Header upload={this.upload} />
 
             <div
@@ -106,7 +121,7 @@ export default class ToolEditorContainer extends Component {
             </div>
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

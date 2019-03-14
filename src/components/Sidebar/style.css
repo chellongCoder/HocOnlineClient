@@ -4,3 +4,12 @@
     bottom: 0px;
     text-decoration: none;
 }
+
+.avatar {
+    border-radius: 30px;
+    margin: 10px
+}
+
+.manage {
+    padding-right:  10px
+}

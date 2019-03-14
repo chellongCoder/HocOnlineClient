@@ -10,7 +10,10 @@ import home from "./../../assets/images/icon/home.png";
 import allNew from "./../../assets/images/icon/allNew.png";
 import documents from "./../../assets/images/icon/documents.png";
 import tools from "./../../assets/images/icon/tools.png";
+import avatar from "./../../assets/images/faces/avatar.jpg";
 import friend from "./../../assets/images/icon/friend.png";
+import chevron_down from "./../../assets/images/icon/chevron-down.png";
+
 import "./style.css"
 import {
   BrowserRouter as Router,
@@ -23,6 +26,8 @@ import PropTypes from "prop-types";
 import CommonStyle from "../../pages/theme/commonStyle";
 import commonColor from "../../pages/theme/commonColor";
 import withStyles from "@material-ui/core/styles/withStyles";
+import jwt_decode from "jwt-decode";
+import UserService from "../../services/UserService";
 
 const styles = theme => ({
   navIcon: {
@@ -43,12 +48,27 @@ const navSubIcon = {
   marginRight: 10
 };
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name : "",
+      role : ""
+    }
+  }
+  async componentDidMount() {
+    let decoded = jwt_decode(localStorage.getItem('token'));
+    console.log("decode", decoded);
+    let has_roles = await UserService.getUserRoleByIdUser(decoded.Id);
+    let role = await UserService.getRoleById(has_roles.Roles_id);
+    console.log("role", role); 
+    this.setState({name : decoded.userName, role : role.name});
+  }
   render() {
     console.log("path ", this.props.path);
     const { classes } = this.props;
     return (
       <SideNav
-        style={{ background: 'blue', minWidth: '14%',}}
+        style={{ background: commonColor.defaultColor, minWidth: "14%" }}
         expanded={true}
         onSelect={selected => {
           console.log(this.props.path, selected, this.props.history);
@@ -62,6 +82,18 @@ class Sidebar extends Component {
             TODO: @render new feed 
         */}
         <SideNav.Nav defaultSelected="home">
+          <div style={{display : 'flex', flexDirection : "row", alignItems : 'center'}}>
+            <div>
+              <img className="avatar" style={CommonStyle.imageNormal} src={avatar} alt="" />
+            </div>
+            <div>
+              <div style={CommonStyle.textWhite}>{this.state.name}</div>
+              <div style={CommonStyle.textWhite}>
+              <img className="manage" style={CommonStyle.imageSmall} src={chevron_down} alt=""/>
+              {this.state.role}</div>
+            </div>
+          </div>
+
           <NavItem eventKey="home">
             <NavIcon>
               <img src={home} style={navIcon} />
@@ -134,11 +166,21 @@ class Sidebar extends Component {
               <NavText>New post</NavText>
             </NavItem>
           </NavItem>
-          
-      
-            <Link onClick={() => {
+
+          <Link
+            onClick={() => {
               localStorage.clear();
-            }} style={{textDecoration : "none", position : 'absolute', bottom : 0, left : 0}} to="/login">Logout</Link>
+            }}
+            style={{
+              textDecoration: "none",
+              position: "absolute",
+              bottom: 0,
+              left: 0
+            }}
+            to="/login"
+          >
+            Logout
+          </Link>
         </SideNav.Nav>
       </SideNav>
     );

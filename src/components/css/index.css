@@ -14,3 +14,9 @@
     border : 0px solid rgba(0, 0, 0, .125);
     border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
+
+.item:hover {
+    background: #7769FF;
+    border-radius: 10px;
+    padding: 10px;
+}

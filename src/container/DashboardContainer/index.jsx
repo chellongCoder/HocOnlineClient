@@ -33,7 +33,15 @@ const DashboardContainer = ({
                 }} />
                 <Route path={`${match.url}/home`} component={HomeContainer} />
                 <Route path={`${match.url}/allnew`} component={AllNewContainer} />
-                <Route path={`${match.url}/tool`} component={ToolEditorContainer} />
+                <Route path={`${match.url}/tool`} render={(props) => {
+                    return !localStorage.getItem('token') ? (
+                      <Redirect to={{
+                      pathname: "/login",
+                      }}/>
+                      ) : (
+                        <ToolEditorContainer/>
+                    )
+                }} />
             </div>
         </div>
     );

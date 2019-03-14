@@ -22,7 +22,7 @@ export default class EditorComponent extends Component {
         }}>
           <Editor 
           value={value} 
-          placeholder="viết tài liệu ở đây"
+          placeholder="Write down here. please!"
           onChange={this.handleChange.bind(this)} />
         </div>
     )

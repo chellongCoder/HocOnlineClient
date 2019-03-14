@@ -113,6 +113,7 @@ export default {
     whitebackground: "#FFFFFF",
     footerBackground: "#FFFFFF",
     defaultBackground: "#ECECEC",
+    defaultColor : '#7769FF',
     brownBackground: "#CDCED2",
     disableBackground: "#E8E8E8",
     //textWhite

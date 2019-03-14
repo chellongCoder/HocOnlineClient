@@ -17,6 +17,9 @@ const CommonStyle = {
     },
     textNoteBold : {
         color : commonColor.textNoteBold
+    },
+    textWhite : {
+        color : commonColor.whitebackground
     }
 }
 

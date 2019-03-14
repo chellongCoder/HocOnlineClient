@@ -12,11 +12,33 @@ export default class AllNewStore {
 
     @observable
     posts = [];
+    @observable
+    markdown = "";
+    @observable
+    idItemClicked = 0;
+    @observable
+    comments = [];
 
     @action
-    changePosts(post) {
-        console.log(post);
-        this.posts = post;
+    changeComments(comments) {
+        console.log("comment", comments);
+        this.comments = comments;
+    }
+
+    @action
+    changeIdItemClicked(id) {
+        this.idItemClicked = id;
+    }
+
+    @action
+    changeContentMarkdown(input) {
+        this.markdown = input;
+    }
+
+    @action
+    changePosts(posts) {
+        console.log(posts);
+        this.posts = posts;
         console.log(toJS(this.posts));
     }
 
